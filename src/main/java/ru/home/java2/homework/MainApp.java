@@ -70,7 +70,7 @@ public class MainApp {
                 try {
                     sum += Integer.parseInt(strings[i][j]);
                 } catch (NumberFormatException formatException) {
-                    formatException.printStackTrace();
+                    formatException.printStackTrace(); // Не факт, что нужно, но печатает детализацию самого неправильного символа
                     throw new MyArrayDataException("Неправильный тип данных в массиве, по координатам: " + "i = " + i + " j = " + j);
                 }
             }
