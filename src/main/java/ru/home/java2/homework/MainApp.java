@@ -1,5 +1,7 @@
 package ru.home.java2.homework;
 
+import java.util.Arrays;
+
 public class MainApp {
     public static void main(String[] args) {
         /*
@@ -24,23 +26,55 @@ public class MainApp {
          */
 
         String[][] strings = {
-            {"1", "2", "3", "4"},
-            {"1", "2", "3", "4"},
-            {"1", "2", "3", "4"},
-            {"1", "2", "3", "4"}
+//                Test1 i length == 5
+//                {"1", "2", "3", "4", "5"},
+//                {"1", "2", "3", "4", "5"},
+//                {"1", "2", "3", "4", "5"},
+//                {"1", "2", "3", "4", "5"}
+
+//                Test2 j length == 5
+//                {"1", "2", "3", "4"},
+//                {"1", "2", "3", "4"},
+//                {"1", "2", "3", "4"},
+//                {"1", "2", "44", "4"},
+//                {"1", "2", "3", "4"}
+
+//                Test 3 good data to convert
+                {"1", "2", "3", "4"},
+                {"1", "2", "3", "4"},
+                {"1", "2", "44", "4"},
+                {"1", "2", "3", "4"}
+
+//                Test 4 bad data in arrays
+//                {"1", "2", "3", "4"},
+//                {"1", "2", "3", "4"},
+//                {"1", "2", "44", "4"},
+//                {"1", "2", "3", "4"}
         };
 
-        takeArrays(strings);
+//        takeArrays(strings);
+        System.out.println(takeArrays(strings));
     }
-    public static int takeArrays(String[][] arr) throws MyArraySizeException {
+
+    public static int takeArrays(String[][] strings) throws MyArraySizeException, MyArrayDataException {
         int sum = 0;
 
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length; j++) {
-                
+        for (int i = 0; i < strings.length; i++) {
+            if (strings.length > 4) {
+                throw new MyArraySizeException("Неправильный размер массива");
+            }
+            for (int j = 0; j < strings[i].length; j++) {
+                if (strings[i].length > 4) {
+                    throw new MyArraySizeException("Неправильный размер массива");
+                }
+                try {
+                    sum += Integer.parseInt(strings[i][j]);
+                } catch (NumberFormatException formatException) {
+                    throw new MyArrayDataException("Неправильный тип данных в массиве");
+                }
             }
         }
-        
+
         return sum;
     }
 }
