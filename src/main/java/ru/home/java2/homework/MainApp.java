@@ -40,20 +40,20 @@ public class MainApp {
 //                {"1", "2", "3", "4"}
 
 //                Test 3 good data to convert
-                {"1", "2", "3", "4"},
-                {"1", "2", "3", "4"},
-                {"1", "2", "44", "4"},
-                {"1", "2", "3", "4"}
-
-//                Test 4 bad data in arrays
 //                {"1", "2", "3", "4"},
 //                {"1", "2", "3", "4"},
 //                {"1", "2", "44", "4"},
 //                {"1", "2", "3", "4"}
+
+//                Test 4 bad data in arrays
+                {"1", "2", "c3", "4"},
+                {"1", "2", "3", "4"},
+                {"1", "2", "44", "4"},
+                {"1", "2", "3", "4"}
         };
 
 //        takeArrays(strings);
-        System.out.println(takeArrays(strings));
+        System.out.println("Сумма элементов в массиве: "+ takeArrays(strings));
     }
 
     public static int takeArrays(String[][] strings) throws MyArraySizeException, MyArrayDataException {
@@ -70,7 +70,8 @@ public class MainApp {
                 try {
                     sum += Integer.parseInt(strings[i][j]);
                 } catch (NumberFormatException formatException) {
-                    throw new MyArrayDataException("Неправильный тип данных в массиве");
+                    formatException.printStackTrace();
+                    throw new MyArrayDataException("Неправильный тип данных в массиве, по координатам: " + "i = " + i + " j = " + j);
                 }
             }
         }
