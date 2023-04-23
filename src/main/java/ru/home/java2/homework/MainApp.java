@@ -22,5 +22,25 @@ public class MainApp {
         Заметка: Если Java не сможет преобразовать входную строку (в строке число криво написано),
         то будет сгенерировано исключение NumberFormatException.
          */
+
+        String[][] strings = {
+            {"1", "2", "3", "4"},
+            {"1", "2", "3", "4"},
+            {"1", "2", "3", "4"},
+            {"1", "2", "3", "4"}
+        };
+
+        takeArrays(strings);
+    }
+    public static int takeArrays(String[][] arr) throws MyArraySizeException {
+        int sum = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                
+            }
+        }
+        
+        return sum;
     }
 }
