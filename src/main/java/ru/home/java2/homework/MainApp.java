@@ -51,14 +51,15 @@ public class MainApp {
                 {"1", "2", "44", "4"},
                 {"1", "2", "3", "4"}
         };
-
-//        takeArrays(strings);
-        System.out.println("Сумма элементов в массиве: "+ takeArrays(strings));
+        try {
+            System.out.println("Сумма элементов в массиве: " + takeArrays(strings));
+        } catch (MyArrayDataException | MyArraySizeException dataAndSizeException) {
+            dataAndSizeException.printStackTrace();
+        }
     }
 
-    public static int takeArrays(String[][] strings) throws MyArraySizeException, MyArrayDataException {
+    public static int takeArrays(String[][] strings) {
         int sum = 0;
-
         for (int i = 0; i < strings.length; i++) {
             if (strings.length > 4) {
                 throw new MyArraySizeException("Неправильный размер массива");
@@ -70,12 +71,10 @@ public class MainApp {
                 try {
                     sum += Integer.parseInt(strings[i][j]);
                 } catch (NumberFormatException formatException) {
-                    formatException.printStackTrace(); // Не факт, что нужно, но печатает детализацию самого неправильного символа
-                    throw new MyArrayDataException("Неправильный тип данных в массиве, по координатам: " + "i = " + i + " j = " + j);
+                    throw new MyArrayDataException(i, j);
                 }
             }
         }
-
         return sum;
     }
 }
