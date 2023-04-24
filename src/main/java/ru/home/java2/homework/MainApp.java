@@ -33,11 +33,11 @@ public class MainApp {
 //                {"1", "2", "3", "4", "5"}
 
 //                Test2 j length == 5
-//                {"1", "2", "3", "4"},
-//                {"1", "2", "3", "4"},
-//                {"1", "2", "3", "4"},
-//                {"1", "2", "44", "4"},
-//                {"1", "2", "3", "4"}
+                {"1", "2", "3", "4"},
+                {"1", "2", "3", "4"},
+                {"1", "2", "3", "4"},
+                {"1", "2", "44", "4"},
+                {"1", "2", "3", "4"}
 
 //                Test 3 good data to convert
 //                {"1", "2", "3", "4"},
@@ -46,15 +46,15 @@ public class MainApp {
 //                {"1", "2", "3", "4"}
 
 //                Test 4 bad data in arrays
-                {"1", "2", "c3", "4"},
-                {"1", "2", "3", "4"},
-                {"1", "2", "44", "4"},
-                {"1", "2", "3", "4"}
+//                {"1", "2", "c3", "4"},
+//                {"1", "2", "3", "4"},
+//                {"1", "2", "44", "4"},
+//                {"1", "2", "3", "4"}
         };
         try {
             System.out.println("Сумма элементов в массиве: " + takeArrays(strings));
-        } catch (MyArrayDataException | MyArraySizeException dataAndSizeException) {
-            dataAndSizeException.printStackTrace();
+        } catch (MyArrayDataException | MyArraySizeException e) {
+            e.printStackTrace();
         }
     }
 
@@ -70,7 +70,7 @@ public class MainApp {
                 }
                 try {
                     sum += Integer.parseInt(strings[i][j]);
-                } catch (NumberFormatException formatException) {
+                } catch (NumberFormatException e) {
                     throw new MyArrayDataException(i, j);
                 }
             }
